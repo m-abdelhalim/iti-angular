@@ -7,23 +7,30 @@ import { CartList, Product } from '../models/product.model';
   templateUrl: './navbar-mid.component.html',
   styleUrls: ['./navbar-mid.component.scss']
 })
-export class NavbarMidComponent implements OnInit,AfterViewChecked,AfterContentInit {
+export class NavbarMidComponent implements OnInit,AfterViewChecked,AfterContentInit,AfterContentChecked {
   toggleDropDown=false
 
   @Input() 
   cartList !: CartList[]
-    totalPrice =0
+    totalPrice!:number
   // rmItemFromCart:EventEmitter<Product>=new EventEmitter<Product>()
   // theAddedProducts !: Product[];
-  removeFromCart(product:any){
+  removeFromCart(event:any){
     // this.cartList=this.cartList.filter(ele=>)
-    let itemTitle =product.target.parentElement.previousSibling.children[0].textContent;
-    console.log(itemTitle);
+    let itemTitle:string =event.target.parentElement.previousSibling?.children[0]?.textContent;
+    console.log((itemTitle.indexOf("X")));
     
     
   }
   
   constructor() { }
+  ngAfterContentChecked(): void {
+    // throw new Error('Method not implemented.');
+    this.totalPrice=0
+    this.cartList.forEach(item=>{
+      this.totalPrice+=item.count*(item.product.discount ? item.product.price - item.product.discount:item.product.price)
+    })
+  }
   ngAfterContentInit(): void {
     // throw new Error('Method not implemented.');
     
@@ -35,10 +42,7 @@ export class NavbarMidComponent implements OnInit,AfterViewChecked,AfterContentI
   
 
   ngAfterViewChecked(): void {
-    this.totalPrice=0
-    this.cartList.forEach(item=>{
-      this.totalPrice+=item.count*(item.product.discount ? item.product.price - item.product.discount:item.product.price)
-    })
+    
     
   }
   

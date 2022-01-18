@@ -48,7 +48,7 @@
                                         {{theAddedProduct?.product?.name}} X {{theAddedProduct?.product?.price}}</a>
                                     <!-- price -->
                                     <span class="item-small-1__description">
-                                        {{theAddedProduct?.count}} X ${{(theAddedProduct?.product?.discount) ? ( theAddedProduct?.product?.discount):(theAddedProduct?.product?.price)}}
+                                        {{theAddedProduct?.count}} X ${{theAddedProduct.product.discount ?  theAddedProduct.product.price - theAddedProduct.product.discount:theAddedProduct.product.price}}
                                     </span>
                                 </div>
                                 <!-- item image -->
