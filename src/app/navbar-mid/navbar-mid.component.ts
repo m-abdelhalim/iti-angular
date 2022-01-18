@@ -1,4 +1,4 @@
-import { EventEmitter,Component, Input, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { EventEmitter,Component, Input, OnInit, AfterViewInit, AfterViewChecked, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit } from '@angular/core';
 // import {  } from 'stream';
 import { CartList, Product } from '../models/product.model';
 
@@ -7,12 +7,12 @@ import { CartList, Product } from '../models/product.model';
   templateUrl: './navbar-mid.component.html',
   styleUrls: ['./navbar-mid.component.scss']
 })
-export class NavbarMidComponent implements OnInit,AfterViewChecked {
+export class NavbarMidComponent implements OnInit,AfterViewChecked,AfterContentInit {
   toggleDropDown=false
 
   @Input() 
   cartList !: CartList[]
-
+    totalPrice =0
   // rmItemFromCart:EventEmitter<Product>=new EventEmitter<Product>()
   // theAddedProducts !: Product[];
   removeFromCart(product:any){
@@ -24,14 +24,27 @@ export class NavbarMidComponent implements OnInit,AfterViewChecked {
   }
   
   constructor() { }
-
-  ngAfterViewChecked(): void {
+  ngAfterContentInit(): void {
+    // throw new Error('Method not implemented.');
+    
+  }
+  ngOnChanges(): void {
     
     
   }
+  
 
-  ngOnInit(): void {
+  ngAfterViewChecked(): void {
+    this.totalPrice=0
+    this.cartList.forEach(item=>{
+      this.totalPrice+=item.count*(item.product.discount ? item.product.price - item.product.discount:item.product.price)
+    })
     
+  }
+  
+  ngOnInit(): void {
+    // this.x++
+    // console.log(this.x);
   }
 
 }
