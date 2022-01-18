@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { Product } from '../models/product.model';
+import { CartList, Product } from '../models/product.model';
 
 @Component({
   selector: 'app-navbar-mid',
@@ -9,8 +9,9 @@ import { Product } from '../models/product.model';
 export class NavbarMidComponent implements OnInit,AfterViewChecked {
   toggleDropDown=false
 
-  @Input()
-  theAddedProducts !: Product[];
+  @Input() 
+  cartList !: CartList[]
+  // theAddedProducts !: Product[];
   
   constructor() { }
 
@@ -20,6 +21,7 @@ export class NavbarMidComponent implements OnInit,AfterViewChecked {
   }
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
+import { CartList, Product } from '../models/product.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +8,9 @@ import { Product } from '../models/product.model';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input()
-  theAddedProducts !: Product[];
+  @Input() cartList !: CartList[]
+  // theAddedProducts !: Product[];
+  
   constructor() { }
 
   ngOnInit(): void {
