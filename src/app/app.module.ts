@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProductListContainerComponent } from './product-list-container/product-list-container.component';
+import { ProductService } from './_services/product.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ProductListContainerComponent } from './product-list-container/product-
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

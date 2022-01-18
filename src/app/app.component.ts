@@ -11,13 +11,15 @@ import { ProductComponent } from './product/product.component';
 export class AppComponent {
   title = 'proj1';
   // addedProducts : Product[]=[];
-  // addedProduct !: Product;
-  cartList: CartList[] = [];
+  addedProduct !: Product;
+  /* cartList: CartList[] = []; */
   onProductAdded(product: Product) {
-    // this.addedProduct = product
+    // debugger
+    this.addedProduct = product
     // this.addedProducts.push(product);
     // this.addedProducts=[...new Set<Product>(this.addedProducts)]
-    let count = 1,
+
+   /*  let count = 1,
       isExist = false;
     if (this.cartList.length > 0) {
       this.cartList.forEach((ele) => {
@@ -33,6 +35,6 @@ export class AppComponent {
       this.cartList.push({ count, product });
     }
     
-    // console.log(this.cartList);
+    console.log("from app",this.cartList); */
   }
 }

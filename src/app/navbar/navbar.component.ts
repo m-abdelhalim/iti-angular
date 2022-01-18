@@ -8,8 +8,9 @@ import { CartList, Product } from '../models/product.model';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() cartList !: CartList[]
-  // theAddedProducts !: Product[];
+  @Input() 
+  // cartList !: CartList[]
+  theAddedProduct !: Product;
   
   constructor() { }
 

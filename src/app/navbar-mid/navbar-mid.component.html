@@ -48,14 +48,14 @@
                                         {{theAddedProduct?.product?.name}} X {{theAddedProduct?.product?.price}}</a>
                                     <!-- price -->
                                     <span class="item-small-1__description">
-                                        {{theAddedProduct?.count}} X ${{theAddedProduct.product.discount ?  theAddedProduct.product.price - theAddedProduct.product.discount:theAddedProduct.product.price}}
+                                        {{theAddedProduct.count}} X ${{theAddedProduct.product?.price}}
                                     </span>
                                 </div>
                                 <!-- item image -->
                                 <div class="item-small-1__image-box">
                                     <a href="#" class="item-small-1__image image" style="background-image: url({{theAddedProduct?.product?.imageUrl}})">
                                     </a>
-                                    <a href="#" (click)="removeFromCart($event)"      
+                                    <a href="#" (click)="removeFromCart(theAddedProduct.product)"      
                               class="item-small-1__action">
                                         <i class="fas fa-times"></i>
                                     </a>
