@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { EventEmitter,Component, Input, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+// import {  } from 'stream';
 import { CartList, Product } from '../models/product.model';
 
 @Component({
@@ -11,8 +12,16 @@ export class NavbarMidComponent implements OnInit,AfterViewChecked {
 
   @Input() 
   cartList !: CartList[]
+
+  // rmItemFromCart:EventEmitter<Product>=new EventEmitter<Product>()
   // theAddedProducts !: Product[];
-  
+  removeFromCart(product:any){
+    // this.cartList=this.cartList.filter(ele=>)
+    let itemTitle =product.target.parentElement.previousSibling.children[0].textContent;
+    console.log(itemTitle);
+    
+    
+  }
   
   constructor() { }
 
