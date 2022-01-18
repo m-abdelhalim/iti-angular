@@ -1,38 +1,38 @@
 import { Component } from '@angular/core';
 // import { count } from 'console';
-import { Product,CartList } from './models/product.model';
+import { Product, CartList } from './models/product.model';
 import { ProductComponent } from './product/product.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'proj1';
   // addedProducts : Product[]=[];
   // addedProduct !: Product;
-  cartList : CartList[]= []
-  onProductAdded(product:Product){
+  cartList: CartList[] = [];
+  onProductAdded(product: Product) {
     // this.addedProduct = product
     // this.addedProducts.push(product);
     // this.addedProducts=[...new Set<Product>(this.addedProducts)]
-    let count = 1
-    if(this.cartList.length){
-    this.cartList.forEach(ele=>{
-      
-      if(ele.product.name===product.name){
-          ele.count++
+    let count = 1,
+      isExist = false;
+    if (this.cartList.length > 0) {
+      this.cartList.forEach((ele) => {
+        if (ele.product.name === product.name) {
+          ele.count++;
+          isExist = true;
+        }
+      });
+      if(!isExist){
+        this.cartList.push({ count, product });
       }
-      else{
-        ele.count=0
-      }
-      
-    })}
-    else{
-    this.cartList.push({count,product})
+    } else  {
+      this.cartList.push({ count, product });
     }
-    console.log(this.cartList);
+    
+    // console.log(this.cartList);
   }
-  
 }

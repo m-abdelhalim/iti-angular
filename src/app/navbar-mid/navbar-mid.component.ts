@@ -13,6 +13,7 @@ export class NavbarMidComponent implements OnInit,AfterViewChecked {
   cartList !: CartList[]
   // theAddedProducts !: Product[];
   
+  
   constructor() { }
 
   ngAfterViewChecked(): void {
