@@ -8,7 +8,7 @@
     <!-- user options -->
     <div class="header__user-options">
         <!-- login control -->
-        <a href="#" class="link">Login</a>
+        <a routerLink="/login" class="link">Login</a>
         <div class="dropdown">
             <div class="dropdown__header">
                 <div class="image image--small image--circle" style="background-image: url('../../assets/img/PersonalImage.png')">
@@ -55,7 +55,7 @@
                                 <div class="item-small-1__image-box">
                                     <a href="#" class="item-small-1__image image" style="background-image: url({{theAddedProduct?.product?.imageUrl}})">
                                     </a>
-                                    <a href="#" (click)="removeFromCart($event)"      
+                                    <a href="#" (click)="removeFromCart(theAddedProduct.product)"      
                               class="item-small-1__action">
                                         <i class="fas fa-times"></i>
                                     </a>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { NavbarTopComponent } from './navbar-top/navbar-top.component';
 import { NavbarMidComponent } from './navbar-mid/navbar-mid.component';
@@ -9,7 +8,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProductListContainerComponent } from './product-list-container/product-list-container.component';
-import { ProductService } from './services/product.service';
+import { ProductService } from './_services/product.service';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AddProductComponent } from './add-product/add-product.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +24,15 @@ import { ProductService } from './services/product.service';
     NavbarComponent,
     ProductListComponent,
     ProductComponent,
-    ProductListContainerComponent
+    ProductListContainerComponent,
+    AddProductComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProductDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

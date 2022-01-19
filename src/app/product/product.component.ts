@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../_models/product.model';
-import { ProductService } from '../services/product.service';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit,AfterViewInit {
   
   onAddToCartPressed(){
     // this.productAdded.emit(this.product)
-    // this.productService.productAdded
+    this.productService.productAdded.emit(this.product)
   }
   
   constructor(private productService: ProductService) { }
