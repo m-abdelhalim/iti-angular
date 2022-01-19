@@ -23,41 +23,41 @@ export class ProductListComponent implements OnInit {
   
   productArr :Product[] = [
     {
-      name: 'A1',
-      price:100,
+      name: 'Product 1001',
+      price:200,
       discount:20,
       imageUrl:"https://picsum.photos/seed/1/300",
       description:""
     },
     {
-      name: 'A2',
+      name: 'Product 1002',
       price:100,
       imageUrl:"https://picsum.photos/seed/picsum/300",
       description:""
     },
     {
-      name: 'A3',
-      price:100,
+      name: 'Product 1003',
+      price:150,
       imageUrl:"https://picsum.photos/seed/picsum/300",
       description:""
     },
     {
-      name: 'A4',
+      name: 'Product 1004',
       price:100,
       discount:20,
       imageUrl:"https://picsum.photos/seed/picsum/300",
       description:""
     },
     {
-      name: 'A5',
-      price:100,
+      name: 'Product 1005',
+      price:150,
       discount:20,
       imageUrl:"https://picsum.photos/seed/picsum/300",
       description:""
     },
     {
-      name: 'A6',
-      price:100,
+      name: 'Product 1006',
+      price:300,
       imageUrl:"https://picsum.photos/seed/picsum/300",
       description:""
     }
