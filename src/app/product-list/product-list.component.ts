@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { Product } from '../_models/product.model';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -21,47 +22,7 @@ export class ProductListComponent implements OnInit {
   // }
  
   
-  productArr :Product[] = [
-    {
-      name: 'Product 1001',
-      price:200,
-      discount:20,
-      imageUrl:"https://picsum.photos/seed/1/300",
-      description:""
-    },
-    {
-      name: 'Product 1002',
-      price:100,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
-    },
-    {
-      name: 'Product 1003',
-      price:150,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
-    },
-    {
-      name: 'Product 1004',
-      price:100,
-      discount:20,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
-    },
-    {
-      name: 'Product 1005',
-      price:150,
-      discount:20,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
-    },
-    {
-      name: 'Product 1006',
-      price:300,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
-    }
-  ]
+  productArr !:Product[]
 
   @Output()
   productAdded:EventEmitter<Product> = new EventEmitter<Product>();
@@ -69,18 +30,12 @@ export class ProductListComponent implements OnInit {
     // console.log(product);
     this.productAdded.emit(product)
   }
-  constructor() { 
-    // this.getProd();
-    // ({products:this.productArr} = this.products)
-    // console.log(this.productArr);
+  constructor(private productService : ProductService) { 
+ 
   }
 
   ngOnInit(): void {
-    
-    
-    
-    
-    
+    this.productArr = this.productService.getAllProducts()    
   }
 
 }

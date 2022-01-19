@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
 
     
   onAddToCartPressed(){
-        this.productService.addProductToCart(this.product)
+        this.productService.addProductToCart(1, this.product)
   }
   
   constructor(private productService: ProductService) { }

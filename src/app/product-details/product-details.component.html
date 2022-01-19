@@ -8,9 +8,9 @@
             <!-- images slider -->
             <div class="slider">
                 <div class="slider__items">
-                    <div class="slider__item active" style="background-image: url(img/products/product-grey-7.jpg)"></div>
-                    <div class="slider__item" style="background-image: url(img/products/product-grey-7.jpg)"></div>
-                    <div class="slider__item" style="background-image: url(img/products/product-grey-7.jpg)"></div>
+                    <div class="slider__item active" style="background-image: url('{{product.imageUrl}}')"></div>
+                    <div class="slider__item" style="background-image: url(assets/img/products/product-grey-7.jpg)"></div>
+                    <div class="slider__item" style="background-image: url(assets/img/products/product-grey-7.jpg)"></div>
                 </div>
                 <div class="slider__indicators">
                     <span class="slider__indicator active"></span>
@@ -20,13 +20,13 @@
             </div>
             <!-- product info -->
             <div class="product-details__info">
-                <h1>Blue Ladies Handbag</h1>
+                <h1>{{product?.name}}</h1>
                 <div class="rating">
                     <div class="rating__stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
                     <div class="rating__data">
@@ -34,25 +34,23 @@
                     </div>
                 </div>
                 <div class="product-details__amount">
-                    $22
+                    ${{product.discount ? product.price - product.discount : product.discount}}
                 </div>
                 <p class="product-details__desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing.
-                    Fusce in hendrerit purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh
-                    sed elimttis adipiscing. Fusce in hendrerit purus.
+                    {{product.description}}
                 </p>
                 <div class="product-details__add">
                     <div class="increment-control">
-                        <a href="#" class="increment-control__action">-</a>
-                        <input type="text" class="form-control" title="Qty" value="1">
-                        <a href="#" class="increment-control__action">+</a>
+                        <a (click)="decreament()" class="increment-control__action">-</a>
+                        <input  type="text" class="form-control" title="Qty" [value]="count">
+                        <a (click)="increament()" class="increment-control__action">+</a>
                     </div>
-                    <button href="#" class="btn btn--primary">Add to cart</button>
+                    <button class="btn btn--primary" (click)="addProductToCart()">Add to cart</button>
                 </div>
                 <div class="product-details__meta">
                     Categories: <a rel="tag" href="#">Accessories</a>, <a rel="tag" href="#">Bags</a>.
                 </div>
-            </div>
+        </div>
         </section>
         <section class="tabs">
             <div class="tabs__headers">
@@ -98,8 +96,8 @@
             <div class="item-listing__items item-listing--4items">
                 <!-- medium item -->
                 <div class="item-medium-1">
-                    <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
-                        <a href="#" class="item-medium-1__action">Add to Cart</a>
+                    <div class="item-medium-1__image image" style="background-image: url('assets/img/products/product-grey-1.jpg')">
+                        <a (click)="addProductToCart()" class="item-medium-1__action">Add to Cart</a>
                     </div>
                     <a href="#">
                         <h4>Photo Camera</h4>
@@ -115,25 +113,7 @@
                     </div>
                 </div>
                 <div class="item-medium-1">
-                    <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
-                        <a href="#" class="item-medium-1__action">Add to Cart</a>
-                    </div>
-                    <a href="#">
-                        <h4>Photo Camera</h4>
-                        <div>
-                            <del>$325</del>
-                            <span class="lable">$299</span>
-                        </div>
-                    </a>
-                    <div class="crud-actions">
-                        <a href="#"><i class="far fa-eye"></i></a>
-                        <a href="#"><i class="fas fa-edit"></i></a>
-                        <a href="#"><i class="fas fa-trash-alt"></i></a>
-                    </div>
-                </div>
-                <div class="item-medium-1">
-                    <div class="item-medium-1__alert">Sale</div>
-                    <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
+                    <div class="item-medium-1__image image" style="background-image: url('assets/img/products/product-grey-1.jpg')">
                         <a href="#" class="item-medium-1__action">Add to Cart</a>
                     </div>
                     <a href="#">
@@ -151,7 +131,25 @@
                 </div>
                 <div class="item-medium-1">
                     <div class="item-medium-1__alert">Sale</div>
-                    <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
+                    <div class="item-medium-1__image image" style="background-image: url('assets/img/products/product-grey-1.jpg')">
+                        <a href="#" class="item-medium-1__action">Add to Cart</a>
+                    </div>
+                    <a href="#">
+                        <h4>Photo Camera</h4>
+                        <div>
+                            <del>$325</del>
+                            <span class="lable">$299</span>
+                        </div>
+                    </a>
+                    <div class="crud-actions">
+                        <a href="#"><i class="far fa-eye"></i></a>
+                        <a href="#"><i class="fas fa-edit"></i></a>
+                        <a href="#"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </div>
+                <div class="item-medium-1">
+                    <div class="item-medium-1__alert">Sale</div>
+                    <div class="item-medium-1__image image" style="background-image: url('assets/img/products/product-grey-1.jpg')">
                         <a href="#" class="item-medium-1__action">Add to Cart</a>
                     </div>
                     <a href="#">

@@ -10,9 +10,11 @@ import { RegisterComponent } from "./register/register.component";
     imports:[RouterModule.forRoot([
         {path:'home', component:ProductListContainerComponent},
         {path:'',redirectTo:'/home',pathMatch:'full'},
-        {path:'product-details',component:ProductDetailsComponent},
+        {path:'products', children:[
+            {path:':productName/details',component:ProductDetailsComponent},
+            {path:'', redirectTo:'/home', pathMatch:'full'}
+        ]},
         {path:'add',component:AddProductComponent},
-        {path:'products',redirectTo:'/home'},
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent},
         {path:'**', redirectTo:'/home'}
