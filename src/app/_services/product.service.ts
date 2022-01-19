@@ -7,12 +7,14 @@ import { CartList, Product } from '../_models/product.model';
 export class ProductService {
   productAdded : EventEmitter<Product> = new EventEmitter<Product>()
   productRemoved:EventEmitter<Product>=new EventEmitter<Product>()
+  cartChanged:EventEmitter<CartList[]>=new EventEmitter<CartList[]>()
   cartList: CartList[]=[]
   constructor() { }
 
   removeProductFromCart(product:Product){
     this.cartList=this.cartList.filter(item=>item.product!=product)
     // console.log(this.cartList);
+    this.cartChanged.emit(this.cartList)
     
   }
   addProductToCart(product:Product){
@@ -32,7 +34,7 @@ export class ProductService {
   } else  {
     this.cartList.push({ count, product });
   }
-  
+  this.cartChanged.emit(this.cartList)
   // // console.log("from app",this.cartList);
 
   // this.totalPrice=0

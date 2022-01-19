@@ -7,28 +7,20 @@ import { ProductService } from '../_services/product.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit,AfterViewInit {
+export class ProductComponent implements OnInit {
 
   @Input()
   product!: Product;
 
-  @Output()
-  productAdded:EventEmitter<Product> = new EventEmitter<Product>();
-  
-  
-  
+    
   onAddToCartPressed(){
-    // this.productAdded.emit(this.product)
-    this.productService.productAdded.emit(this.product)
+        this.productService.addProductToCart(this.product)
   }
   
   constructor(private productService: ProductService) { }
 
 
-  ngAfterViewInit(): void {
-    
-  }
-
+  
   ngOnInit(): void {
   }
 
