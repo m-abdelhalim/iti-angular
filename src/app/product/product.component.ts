@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../models/product.model';
-import { ProductService } from '../_services/product.service';
+// import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit,AfterViewInit {
     // this.productService.itemAdded.emit(this.product)
   }
   
-  constructor(private productService:ProductService) {
+  constructor() {
 
    }
 

@@ -1,7 +1,7 @@
 import { EventEmitter,Component, Input, OnInit, AfterViewInit, AfterViewChecked, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit } from '@angular/core';
 // import {  } from 'stream';
 import { CartList, Product } from '../models/product.model';
-import { ProductService } from '../_services/product.service';
+// import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-navbar-mid',
@@ -25,7 +25,7 @@ export class NavbarMidComponent implements OnInit,AfterViewInit,AfterViewChecked
 
 
   
-  constructor(private productService : ProductService) { }
+  constructor() { }
   ngAfterViewInit(): void {
     // console.log(this.theAddedProduct,"from after view init");
     
@@ -100,7 +100,7 @@ export class NavbarMidComponent implements OnInit,AfterViewInit,AfterViewChecked
 
     // this.x++
     // console.log(this.x);
-    this.productService.itemAdded.subscribe()
+    // this.productService.itemAdded.subscribe()
   }
 
 }
