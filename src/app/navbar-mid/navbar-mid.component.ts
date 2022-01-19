@@ -1,6 +1,6 @@
 import { EventEmitter,Component, Input, OnInit, AfterViewInit, AfterViewChecked, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit } from '@angular/core';
 // import {  } from 'stream';
-import { CartList, Product } from '../models/product.model';
+import { CartList, Product } from '../_models/product.model';
 
 @Component({
   selector: 'app-navbar-mid',

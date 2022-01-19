@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // import { count } from 'console';
-import { Product, CartList } from './models/product.model';
+import { Product, CartList } from './_models/product.model';
 import { ProductComponent } from './product/product.component';
 
 @Component({
