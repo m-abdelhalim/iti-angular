@@ -4,14 +4,14 @@
 <div *ngIf="product?.discount" class="item-medium-1__alert">Sale</div>
 <div
   class="item-medium-1__image image"
-  style="background-image: url('{{ product?.imageUrl }}')"
+  style="background-image: url('{{ product?.image }}')"
 >
   <a class="item-medium-1__action" (click)="onAddToCartPressed()"
     >Add to Cart</a
   >
 </div>
-<a [routerLink]="['/products', product.name , 'details']">
-  <h4>{{ product?.name }}</h4>
+<a [routerLink]="['/products', product.id, 'details']">
+  <h4>{{ product?.title }}</h4>
   <div class="flex-row">
     <div>
       <del *ngIf="product?.discount">${{ product?.price }}</del>

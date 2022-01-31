@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { CartList, Product } from '../_models/product.model';
-
+import {environment as env} from 'src/environments/environment'
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,46 +13,58 @@ export class ProductService {
   cartList: CartList[]=[]
   products :Product[] = [
     {
-      name: 'Product 1001',
+      title: 'Product 1001',
       price:200,
       discount:20,
-      imageUrl:"https://picsum.photos/seed/1/300",
-      description:""
+      image:"https://picsum.photos/seed/1/300",
+      description:"",
+      category:"",
+      id:10
     },
     {
-      name: 'Product 1002',
+      title: 'Product 1002',
       price:100,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
+      image:"https://picsum.photos/seed/picsum/300",
+      description:"",
+      category:"",
+      id:20
     },
     {
-      name: 'Product 1003',
+      title: 'Product 1003',
       price:150,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
+      image:"https://picsum.photos/seed/picsum/300",
+      description:"",
+      category:"",
+      id:30
     },
     {
-      name: 'Product 1004',
+      title: 'Product 1004',
       price:100,
       discount:20,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
+      image:"https://picsum.photos/seed/picsum/300",
+      description:"",
+      category:"",
+      id:40
     },
     {
-      name: 'Product 1005',
+      title: 'Product 1005',
       price:150,
       discount:20,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
+      image:"https://picsum.photos/seed/picsum/300",
+      description:"",
+      category:"",
+      id:50
     },
     {
-      name: 'Product 1006',
+      title: 'Product 1006',
       price:300,
-      imageUrl:"https://picsum.photos/seed/picsum/300",
-      description:""
+      image:"https://picsum.photos/seed/picsum/300",
+      description:"",
+      category:"",
+      id:60
     }
   ]
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   removeProductFromCart(product:Product){
     this.cartList=this.cartList.filter(item=>item.product!=product)
@@ -64,7 +78,7 @@ export class ProductService {
     
   if (this.cartList.length > 0) {
     this.cartList.forEach((ele) => {
-      if (ele.product?.name === product?.name) {
+      if (ele.product?.title === product?.title) {
         ele.count+=count;
         isExist = true;
       }
@@ -82,20 +96,37 @@ export class ProductService {
   //   this.cartList.forEach(item=>{
   //     this.totalPrice+=item.count*(item.product?.discount ? item.product?.price - item.product?.discount:item.product?.price)
   //   })
-  //   // console.log("navbar-mid after content check",this.cartList);
+  //   // console.log("navbar-mid 0after content check",this.cartList);
     
   }
 
-  getProductByName(name:string):Product{
+  getProductBytitle(title:string):Product{
     // debugger
-    const p = this.products.find(item=>item.name == name)
+    const p = this.products.find(item=>item.title == title)
     // console.log(p);
     return p!
     
   }
+  getProductById(id:number):Observable<Product>{
+    return this.httpClient.get<Product>(`${env.baseUrl}/products/${id}` );
+    
+  }
+  getProductByCategory(cat:string,limit:number):Observable<Product[]>{
+    if(limit>0){
+
+      return this.httpClient.get<Product[]>(`${env.baseUrl}/products/category/${cat}?limit=${limit}` );
+    }
+    return this.httpClient.get<Product[]>(`${env.baseUrl}/products/category/${cat}` );
+    
+  }
+  getAllCategories():Observable<[]>{
+    return this.httpClient.get<[]>(`${env.baseUrl}/products/categories` );
+
+  }
   
-  getAllProducts(){
-    return this.products
+  getAllProducts():Observable<Product[]>{
+    return this.httpClient.get<Product[]>(`${env.baseUrl}/products` );
+    // return this.products
   }
 
 }

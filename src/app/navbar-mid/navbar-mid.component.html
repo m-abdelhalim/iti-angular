@@ -45,7 +45,7 @@
                                 <div class="item-small-1__data">
                                     <!-- title -->
                                     <a href="" class="item-small-1__title">
-                                        {{theAddedProduct?.product?.name}} X {{theAddedProduct?.product?.price}}</a>
+                                        {{theAddedProduct?.product?.title}} X {{theAddedProduct?.product?.price}}</a>
                                     <!-- price -->
                                     <span class="item-small-1__description">
                                         {{theAddedProduct?.count}} X ${{theAddedProduct.product.discount ?  theAddedProduct.product.price - theAddedProduct.product.discount:theAddedProduct.product.price}}
@@ -53,7 +53,7 @@
                                 </div>
                                 <!-- item image -->
                                 <div class="item-small-1__image-box">
-                                    <a href="#" class="item-small-1__image image" style="background-image: url({{theAddedProduct?.product?.imageUrl}})">
+                                    <a href="#" class="item-small-1__image image" style="background-image: url({{theAddedProduct?.product?.image}})">
                                     </a>
                                     <a href="#" (click)="removeFromCart(theAddedProduct.product)"      
                               class="item-small-1__action">

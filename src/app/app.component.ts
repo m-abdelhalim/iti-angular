@@ -21,7 +21,7 @@ export class AppComponent {
       isExist = false;
     if (this.cartList.length > 0) {
       this.cartList.forEach((ele) => {
-        if (ele.product.name === product.name) {
+        if (ele.product.title === product.title) {
           ele.count++;
           isExist = true;
         }

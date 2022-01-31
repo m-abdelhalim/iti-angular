@@ -11,13 +11,14 @@ import { RegisterComponent } from "./register/register.component";
         {path:'home', component:ProductListContainerComponent},
         {path:'',redirectTo:'/home',pathMatch:'full'},
         {path:'products', children:[
-            {path:':productName/details',component:ProductDetailsComponent},
+            {path:':productId/details',component:ProductDetailsComponent},
             {path:'', redirectTo:'/home', pathMatch:'full'}
         ]},
+        {path:'category/:categoryName', component:ProductListContainerComponent},
         {path:'add',component:AddProductComponent},
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent},
-        {path:'**', redirectTo:'/home'}
+        // {path:'**', redirectTo:'/home'}
     ])],
     exports:[RouterModule]
 })

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { NavbarTopComponent } from './navbar-top/navbar-top.component';
 import { NavbarMidComponent } from './navbar-mid/navbar-mid.component';
@@ -28,11 +29,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     AddProductComponent,
     LoginComponent,
     RegisterComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
