@@ -36,6 +36,9 @@ export class ProductListComponent implements OnInit {
   
     
   ngOnInit(): void {
+    this.productService.productsChanged.subscribe((res)=>{
+      this.productArr=res;
+    })
     // console.log(this.activatedRoute.snapshot.params)
     this.activatedRoute.params.subscribe(params=>{
       // console.log(routeParams);
@@ -44,7 +47,8 @@ export class ProductListComponent implements OnInit {
         // console.log(params['categoryName']);
         
         this.getProductByCategory(params['categoryName']);}
-    else this.getAllProducts();
+    else 
+      this.getAllProducts();
      
     })
     // const params = this.activatedRoute.snapshot.params;

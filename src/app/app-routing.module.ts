@@ -18,7 +18,7 @@ import { RegisterComponent } from "./register/register.component";
         {path:'add',component:AddProductComponent},
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent},
-        // {path:'**', redirectTo:'/home'}
+        {path:'**', redirectTo:'/home'}
     ])],
     exports:[RouterModule]
 })

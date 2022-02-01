@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Product } from '../_models/product.model';
+import { ProductService } from '../_services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -6,10 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
-  constructor() { }
+  allCategories=[]
+  product={} as Product
+  constructor(private productService:ProductService,
+    private router:Router) { }
 
   ngOnInit(): void {
+    this.getAllCategories()
   }
 
+  getAllCategories(){
+    this.productService.getAllCategories().subscribe(
+      (res)=>{
+        this.allCategories=res;
+      }
+    );
+  }
+  addNewProduct(form:NgForm){
+    // console.log(form.value);
+    this.productService.addNewProduct(this.product);
+    this.router.navigate(['/products'])
+  } 
 }

@@ -2,7 +2,7 @@
 
 <!-- add Item -->
 <div class=" container">
-    <form class="add-product"  action="">
+    <form class="add-product"  #addProductForm=ngForm >
         <div class="add-product__images slider">
             <div class="add-product__image-actions">
                 <div class="add-product__image-action">
@@ -35,13 +35,14 @@
                     </div>
                     <div class="tabs__bodies">
                         <div class="tabs__body active">
-                            <div class="form-group invalid">
+                            <div class="form-group " [ngClass]="{'invalid':titleInput.invalid && titleInput.touched}">
                                 <label for="">Name</label>
-                                <input class="form-control" type="text" name="" id="">
+                                <input required class="form-control" type="text" #titleInput="ngModel" [(ngModel)]="product.title" name="nameEn" id="">
+                                
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" [ngClass]="{'invalid':descInput.invalid && descInput.touched}">
                                 <label for="">Description</label>
-                                <textarea class="form-control" name="" id="" cols="30" rows="4"></textarea>
+                                <textarea #descInput="ngModel" required class="form-control" [(ngModel)]="product.description" name="descriptionEn" id="" cols="30" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="tabs__body ">
@@ -57,21 +58,22 @@
                     </div>
                 </section>
 
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'invalid':priceInput.invalid && priceInput.touched}">
                     <label for="">Price</label>
-                    <input class="form-control" type="text" name="" id="">
+                    <input required #priceInput="ngModel" class="form-control" type="number" [(ngModel)]="product.price" name="price" id="">
                 </div>
                 <div class="add-product__discount">
                     <div class="form-group">
                         <label for="">Satus</label>
                         <div class="form-group__radios">
-                            <div class="form-group__radio"><input type="radio" name="" id=""><span>On Sale</span></div>
-                            <div class="form-group__radio"><input type="radio" name="" id=""><span>Not On Sale</span></div>
+                            <div class="form-group__radio"><input #isOnSale=ngModel ngModel type="radio" name="on-sale" value=1 id=""><span>On Sale</span></div>
+                            <div class="form-group__radio"><input #isOnSale=ngModel ngModel type="radio" name="on-sale" value=0 id=""><span>Not On Sale</span></div>
                         </div>
+                        <!-- <span>{{isOnSale.value}}</span> -->
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" [ngClass]="{'invalid':discountInput.value > priceInput.value && !discountInput.disabled}">
                         <label for="">Discount</label>
-                        <input class="form-control" type="text" name="" id="">
+                        <input #discountInput="ngModel"  [disabled]="isOnSale.value == 0" class="form-control" type="number" [(ngModel)]="product.discount" name="discount" id="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -86,23 +88,11 @@
                         <div class="form-group__checkbox"><input type="checkbox" name="" id=""><span>On Dilivery</span></div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'invalid':catInput.invalid && catInput.touched}">
                     <label for="">Category</label>
-                    <select class="form-control" name="" id="">
-                        <option value="">Arts & Crafts</option>
-                        <option value="">Automotive</option>
-                        <option value="">Baby</option>
-                        <option value="">Books</option>
-                        <option value="">Eletronics</option>
-                        <option value="">Women's Fashion</option>
-                        <option value="">Men's Fashion</option>
-                        <option value="">Health & Household</option>
-                        <option value="">Home & Kitchen</option>
-                        <option value="">Military Accessories</option>
-                        <option value="">Movies & Television</option>
-                        <option value="">Sports & Outdoors</option>
-                        <option value="">Tools & Home Improvement</option>
-                        <option value="">Toys & Games</option>
+                    <select required #catInput="ngModel" class="form-control" ngModel name="category" id="">
+                        <option [selected]="product.category==c" *ngFor="let c of allCategories;let i=index" [value]="i">{{c}}</option>
+                        
                     </select>
                 </div>
 
@@ -139,7 +129,7 @@
                 </div>
                 <div class="add-product__actions">
                     <button href="#" class="btn btn--gray">Cancel</button>
-                    <button href="#" class="btn btn--primary">Add</button>
+                    <button (click)="addNewProduct(addProductForm)" [disabled]="addProductForm.invalid"  class="btn btn--primary">Add</button>
                 </div>
             </div>
         </div>

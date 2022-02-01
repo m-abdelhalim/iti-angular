@@ -10,8 +10,11 @@ export class ProductService {
   // productAdded : EventEmitter<Product> = new EventEmitter<Product>()
   // productRemoved:EventEmitter<Product>=new EventEmitter<Product>()
   cartChanged:EventEmitter<CartList[]>=new EventEmitter<CartList[]>()
+  productsChanged:EventEmitter<Product[]>=new EventEmitter<Product[]>()
   cartList: CartList[]=[]
-  products :Product[] = [
+  products :Product[] =[]
+  // isFirst=true
+  /* products :Product[] = [
     {
       title: 'Product 1001',
       price:200,
@@ -63,9 +66,11 @@ export class ProductService {
       category:"",
       id:60
     }
-  ]
+  ] */
   constructor(private httpClient: HttpClient) { }
 
+
+  // ------------------ cart---------------------
   removeProductFromCart(product:Product){
     this.cartList=this.cartList.filter(item=>item.product!=product)
     // console.log(this.cartList);
@@ -127,6 +132,22 @@ export class ProductService {
   getAllProducts():Observable<Product[]>{
     return this.httpClient.get<Product[]>(`${env.baseUrl}/products` );
     // return this.products
+  }
+  
+
+  addNewProduct(p:Product){
+    this.httpClient.post(`${env.baseUrl}/products`,{
+      body:JSON.stringify(
+        {
+            title: 'test product',
+            price: 13.5,
+            description: 'lorem ipsum set',
+            image: 'https://i.pravatar.cc',
+            category: 'electronic'
+        }
+    )
+    })
+    
   }
 
 }
