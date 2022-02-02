@@ -37,12 +37,12 @@
                         <div class="tabs__body active">
                             <div class="form-group " [ngClass]="{'invalid':titleInput.invalid && titleInput.touched}">
                                 <label for="">Name</label>
-                                <input required class="form-control" type="text" #titleInput="ngModel" [(ngModel)]="product.title" name="nameEn" id="">
+                                <input required class="form-control" type="text" #titleInput="ngModel" [(ngModel)]="product.title" name="title" id="">
                                 
                             </div>
                             <div class="form-group" [ngClass]="{'invalid':descInput.invalid && descInput.touched}">
                                 <label for="">Description</label>
-                                <textarea #descInput="ngModel" required class="form-control" [(ngModel)]="product.description" name="descriptionEn" id="" cols="30" rows="4"></textarea>
+                                <textarea #descInput="ngModel" required class="form-control" [(ngModel)]="product.description" name="description" id="" cols="30" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="tabs__body ">
