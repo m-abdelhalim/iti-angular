@@ -8,17 +8,25 @@ import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
     imports:[RouterModule.forRoot([
-        {path:'home', component:ProductListContainerComponent},
-        {path:'',redirectTo:'/home',pathMatch:'full'},
+        // {path:'home', component:ProductListContainerComponent},
+        {path:'',redirectTo:'/products/page/1',pathMatch:'full'},
         {path:'products', children:[
             {path:':productId/details',component:ProductDetailsComponent},
-            {path:'', redirectTo:'/home', pathMatch:'full'}
+            {path:'page/:pageNumber', component:ProductListContainerComponent},
+            
+            {path:'', redirectTo:'/products/page/1',pathMatch:'full'}
         ]},
-        {path:'category/:categoryName', component:ProductListContainerComponent},
+        
+        {path:'category', children:[
+
+            {path:':categoryName/page/:pageNumber', component:ProductListContainerComponent},
+            {path:':categoryName', redirectTo:'/category/:categoryName/page/1',pathMatch:'full'},
+
+        ]},
         {path:'add',component:AddProductComponent},
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent},
-        {path:'**', redirectTo:'/home'}
+        {path:'**', redirectTo:'/products/page/1'}
     ], {scrollPositionRestoration: 'enabled'})],
     exports:[RouterModule]
 })

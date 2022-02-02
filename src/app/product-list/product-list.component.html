@@ -16,8 +16,8 @@
 <div class="item-listing__items item-listing--3items" >
   <app-product 
   
-    *ngFor="let p of productArr; let i = index"
-    [product]="productArr[i]"
+    *ngFor="let p of currentPageProducts; let i = index"
+    [product]="currentPageProducts[i]"
     class="item-medium-1"
     style="width: 30% ;"
   ></app-product>
@@ -25,17 +25,17 @@
 <!-- paging -->
 <div class="paging">
   <!-- left arrow -->
-  <div class="paging__arrow">
+  <a class="paging__arrow" [routerLink]="['/',currentRoute,'page',1]">
     <i class="fas fa-angle-left"></i>
-  </div>
+  </a>
   <!-- page number -->
-  <div class="paging__number active">1</div>
-  <div class="paging__number">2</div>
-  <div class="paging__number">3</div>
+  <a [routerLink]="['/',currentRoute,'page',previousPage]" [hidden]="previousPage==0" class="paging__number ">{{previousPage}}</a>
+  <a [routerLink]="['/',currentRoute,'page',currentPage]"   class="paging__number active">{{currentPage}}</a>
+  <a [routerLink]="['/',currentRoute,'page',nextPage]" [hidden]="nextPage> last "  class="paging__number ">{{nextPage}}</a>
   <!-- right arrow -->
-  <div class="paging__arrow">
+  <a class="paging__arrow" [routerLink]="['/',currentRoute ,'page',last]">
     <i class="fas fa-angle-right"></i>
-  </div>
+  </a>
 </div>
 
 <!-- <app-product [product]="productArr[1]" class="item-medium-1"></app-product>
