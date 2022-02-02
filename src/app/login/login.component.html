@@ -3,18 +3,18 @@
 
 <!-- Login -->
 <div class="container">
-    <form class="login">
+    <form class="login" #mylogin=ngForm>
         <h4 class="login__header">
             I'M A RETURNING CUSTOMER
         </h4>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{'invalid':usernameInput.invalid && usernameInput.touched}">
             <label for="">Username or E-mail Address</label>
-            <input class="form-control" type="text" name="" id="">
+            <input required #usernameInput="ngModel" [(ngModel)]="user.username" class="form-control" type="text" name="username" id="">
         </div>
-        <div class="form-group login__Password">
+        <div class="form-group login__Password" [ngClass]="{'invalid':passwordInput.invalid && passwordInput.touched}">
             <a href="#" class="login__forget-password">(Forget Password?)</a>
             <label for="">Password</label>
-            <input class="form-control" type="text" name="" id="">
+            <input required #passwordInput="ngModel" [(ngModel)]="user.password" class="form-control" type="text" name="password" id="">
         </div>
         <div class="login__remember-me">
             <div class="form-group__checkbox"><input type="checkbox" name="" id="">
@@ -22,7 +22,7 @@
         </div>
         <div class="add-product__actions">
                 <button href="#" class="btn btn--gray">Cancel</button>
-                <button href="#" class="btn btn--primary">Login</button>
+                <button (click)="login(mylogin)" [disabled]="mylogin.invalid" class="btn btn--primary">Login</button>
             </div>
         </div>
         <a href="#" class="login__register-now">Register Now</a>

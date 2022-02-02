@@ -7,28 +7,29 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
-  allCategories=[]
-  product={} as Product
-  constructor(private productService:ProductService,
-    private router:Router) { }
+  allCategories = [];
+  product = {} as Product;
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllCategories()
+    this.getAllCategories();
   }
 
-  getAllCategories(){
-    this.productService.getAllCategories().subscribe(
-      (res)=>{
-        this.allCategories=res;
-      }
-    );
+  getAllCategories() {
+    this.productService.getAllCategories().subscribe((res) => {
+      this.allCategories = res;
+    });
   }
-  addNewProduct(form:NgForm){
+  addNewProduct(form: NgForm) {
     // console.log(form.value);
-    this.productService.addNewProduct(this.product);
-    this.router.navigate(['/products'])
-  } 
+    
+    // debugger;
+    this.productService.addNewProduct(this.product).subscribe((res) => {
+      console.log(res);
+    });
+    // this.router.navigate(['/products'])
+  }
 }

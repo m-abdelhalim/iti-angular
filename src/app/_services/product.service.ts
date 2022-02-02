@@ -135,9 +135,17 @@ export class ProductService {
   }
   
 
-  addNewProduct(p:Product){
-    this.httpClient.post(`${env.baseUrl}/products`,{
+  addNewProduct(p:Product):Observable<{}>{
+    return this.httpClient.post<{}>(`${env.baseUrl}/products`,{
       body:JSON.stringify(p )
+    })
+    
+  }
+  login(u:{}):Observable<any>{
+    // console.log(JSON.stringify(u ));
+    
+    return this.httpClient.post(`${env.baseUrl}/auth/login`,{
+      body:JSON.stringify(u )
     })
     
   }
