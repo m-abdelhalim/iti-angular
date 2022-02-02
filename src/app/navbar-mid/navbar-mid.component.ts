@@ -1,13 +1,19 @@
 import { EventEmitter,Component, Input, OnInit, AfterViewInit, AfterViewChecked, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit } from '@angular/core';
 // import {  } from 'stream';
+<<<<<<< HEAD
 import { CartList, Product } from '../models/product.model';
 // import { ProductService } from '../_services/product.service';
+=======
+import { CartList, Product } from '../_models/product.model';
+import { ProductService } from '../_services/product.service';
+>>>>>>> day4
 
 @Component({
   selector: 'app-navbar-mid',
   templateUrl: './navbar-mid.component.html',
   styleUrls: ['./navbar-mid.component.scss']
 })
+<<<<<<< HEAD
 export class NavbarMidComponent implements OnInit,AfterViewInit,AfterViewChecked,AfterContentInit,AfterContentChecked {
   toggleDropDown=false
 
@@ -90,9 +96,26 @@ export class NavbarMidComponent implements OnInit,AfterViewInit,AfterViewChecked
     
     
   }
+=======
+export class NavbarMidComponent implements OnInit {
+  toggleDropDown=false
+
+  
+
+  cartList = this.productService.cartList
+    totalPrice!:number
+  
+  removeFromCart(product:any){
+    this.productService.removeProductFromCart(product)
+  }
+  
+  constructor(private productService:ProductService) { }
+  
+>>>>>>> day4
   
   
   ngOnInit(): void {
+<<<<<<< HEAD
     // console.log(this.theAddedProduct,"from on init");
     
 
@@ -101,6 +124,19 @@ export class NavbarMidComponent implements OnInit,AfterViewInit,AfterViewChecked
     // this.x++
     // console.log(this.x);
     // this.productService.itemAdded.subscribe()
+=======
+    this.productService.cartChanged.subscribe(
+      (next)=>{
+        this.cartList=next
+        this.totalPrice=0
+        this.cartList.forEach(item=>{
+        this.totalPrice+=item.count*(item.product.discount ? item.product.price - item.product.discount:item.product.price)
+    })
+      },
+      (error)=>{},
+      ()=>{}
+    )
+>>>>>>> day4
   }
-
+  
 }

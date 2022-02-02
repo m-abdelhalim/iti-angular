@@ -1,21 +1,30 @@
 <!-- <p>product works!</p> -->
 <!-- medium item -->
 
-    <div *ngIf="product?.discount" class="item-medium-1__alert">Sale</div>
-    <div class="item-medium-1__image image" style="background-image: url({{product?.imageUrl}})">
-        <a class="item-medium-1__action" (click)="onAddToCartPressed()">Add to Cart</a>
+<div *ngIf="product?.discount" class="item-medium-1__alert">Sale</div>
+<div
+  class="item-medium-1__image image"
+  style="background-image: url('{{ product?.image }}')"
+>
+  <a class="item-medium-1__action" (click)="onAddToCartPressed()"
+    >Add to Cart</a
+  >
+</div>
+<a [routerLink]="['/products', product.id, 'details']">
+  <h4>{{ product?.title }}</h4>
+  <div class="flex-row">
+    <div>
+      <del *ngIf="product?.discount">${{ product?.price }}</del>
+      <span class="lable"
+        >${{
+          product.discount ? product.price - product.discount : product.price
+        }}</span
+      >
     </div>
-    <a href="#">
-        <h4>{{product?.name}}</h4>
-        <div class="flex-row">
-            <div>
-                <del *ngIf="product?.discount">${{product?.price}}</del>
-                <span class="lable">${{product.discount? product.price - product.discount:product.price}}</span>
-            </div>
-        </div>
-    </a>
-    <div class="crud-actions">
-        <a href="#"><i class="far fa-eye"></i></a>
-        <a href="#"><i class="fas fa-edit"></i></a>
-        <a href="#"><i class="fas fa-trash-alt"></i></a>
-    </div>
+  </div>
+</a>
+<div class="crud-actions">
+  <a href="#"><i class="far fa-eye"></i></a>
+  <a href="#"><i class="fas fa-edit"></i></a>
+  <a href="#"><i class="fas fa-trash-alt"></i></a>
+</div>

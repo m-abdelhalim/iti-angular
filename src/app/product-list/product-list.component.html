@@ -2,23 +2,24 @@
 
 <!-- tools (sorting , change view , exporting) -->
 <div class="item-listing__tools">
-  <select class="form-control" name="" id="">
-    <option value="1">Featured</option>
-    <option value="2">Price low to high</option>
+  <select class="form-control" name="" id="" (change)="sortBy($event)">
+    <option (select)="sortBy($event)" value="1">Featured</option>
+    <option value="2" >Price low to high</option>
     <option value="3">Price high to low</option>
     <option value="4">Name</option>
   </select>
-  <a class="action-btn" href="#">
+<a class="action-btn" routerLink="/add">
     <i class="fas fa-plus"></i>
   </a>
 </div>
 <!-- items -->
-<div class="item-listing__items item-listing--3items">
+<div class="item-listing__items item-listing--3items" >
   <app-product 
-  (productAdded)="onProductAdded($event)"
+  
     *ngFor="let p of productArr; let i = index"
     [product]="productArr[i]"
     class="item-medium-1"
+    style="width: 30% ;"
   ></app-product>
 </div>
 <!-- paging -->

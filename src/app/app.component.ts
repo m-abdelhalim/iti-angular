@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // import { count } from 'console';
-import { Product, CartList } from './models/product.model';
+import { Product, CartList } from './_models/product.model';
 import { ProductComponent } from './product/product.component';
 
 @Component({
@@ -23,7 +23,7 @@ export class AppComponent {
       isExist = false;
     if (this.cartList.length > 0) {
       this.cartList.forEach((ele) => {
-        if (ele.product.name === product.name) {
+        if (ele.product.title === product.title) {
           ele.count++;
           isExist = true;
         }

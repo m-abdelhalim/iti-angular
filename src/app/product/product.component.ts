@@ -1,33 +1,26 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product } from '../models/product.model';
-// import { ProductService } from '../_services/product.service';
+import { Product } from '../_models/product.model';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit,AfterViewInit {
+export class ProductComponent implements OnInit {
 
   @Input()
   product!: Product;
 
-  @Output()
-  productAdded:EventEmitter<Product> = new EventEmitter<Product>();
+    
   onAddToCartPressed(){
-    this.productAdded.emit(this.product)
-    // this.productService.itemAdded.emit(this.product)
+        this.productService.addProductToCart(1, this.product)
   }
   
-  constructor() {
-
-   }
+  constructor(private productService: ProductService) { }
 
 
-  ngAfterViewInit(): void {
-    
-  }
-
+  
   ngOnInit(): void {
   }
 
