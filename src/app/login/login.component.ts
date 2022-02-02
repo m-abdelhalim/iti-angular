@@ -8,14 +8,14 @@ import { ProductService } from '../_services/product.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  user = { username: '', password: '' };
+  user={
+    username: "mor_2314",
+    password: "83r5^_"
+};
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {}
-  /* 
-                username: "mor_2314",
-                password: "83r5^_"
-*/
+  
   login(form: NgForm) {
     // console.log(this.user);
     this.productService.login(this.user).subscribe((res) => {

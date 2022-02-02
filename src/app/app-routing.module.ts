@@ -19,7 +19,7 @@ import { RegisterComponent } from "./register/register.component";
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent},
         {path:'**', redirectTo:'/home'}
-    ])],
+    ], {scrollPositionRestoration: 'enabled'})],
     exports:[RouterModule]
 })
 export class AppRoutingModule{}

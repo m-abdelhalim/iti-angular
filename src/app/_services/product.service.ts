@@ -150,4 +150,13 @@ export class ProductService {
     
   }
 
+  register(u:{}):Observable<any>{
+    // console.log(JSON.stringify(u ));
+    
+    return this.httpClient.post(`${env.baseUrl}/users`,{
+      body:JSON.stringify(u )
+    })
+    
+  }
+
 }
